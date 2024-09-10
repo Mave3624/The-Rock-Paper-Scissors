@@ -1,5 +1,3 @@
-setTimeout(() => {console.log("Game starting in 3 Seconds")},3000)
-
 // Computer Choice Function
 let getComputerChoice = function(computer, random) {
 random = Math.floor(Math.random()*100);
