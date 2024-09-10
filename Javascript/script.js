@@ -46,8 +46,9 @@ return {computerScore, humanScore}
 console.log(playRound());
 
 //Play Round
-
 function playGame() {
+humanScore = 0;
+computerScore= 0;
  for (i = 1; i <= 5; i++ ) {
     playRound()
 }
