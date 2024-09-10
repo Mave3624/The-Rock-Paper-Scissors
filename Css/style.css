@@ -1,0 +1,8 @@
+p {
+    size: 250px;
+    font-weight: bolder;
+    font-family: monospace, sans-serif;
+    text-align: center;
+    margin: 0;
+    border: none;
+}
