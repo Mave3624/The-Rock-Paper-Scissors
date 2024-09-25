@@ -6,3 +6,24 @@ p {
     margin: 0;
     border: none;
 }
+
+.btn-Container {
+    text-align: center;
+    padding: 50px 10px;
+}
+
+.btn-Container>button {
+    width: 80px;
+    padding: 10px 0;
+    font-weight: 800;
+    margin: 10px;
+    border: 1px solid rgba(0, 132, 255, 0.233);
+}
+
+div > p {
+    padding: 50px 0;
+}
+
+span {
+    font-family:cursive;
+}

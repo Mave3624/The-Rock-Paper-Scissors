@@ -1,60 +1,86 @@
 // Computer Choice Function
-let getComputerChoice = function(computer, random) {
-random = Math.floor(Math.random()*100);
-(random >= 0 && random <= 30) ? computer = "Rock":
-(random > 30 && random <= 70) ? computer = "Scissors":
-(random > 70 && random <= 100) ? computer = "Paper":
-computer = "Error";
-return computer
-}
-console.log(getComputerChoice())
+let getComputerChoice = function() {
+    let computer
+    const random = Math.floor(Math.random()*10)+1;
+    (random >= 0 && random <= 3) ? computer = "Rock":
+    (random > 3 && random <= 7) ? computer = "Paper":
+    computer = "Scissors";
+    return computer
+    }
 
-//Human Choice Function
-let getHumanChoice = function(input) {
-    input = prompt("Make a choice; Rock, Scissors or Paper")
+    const btn = document.querySelector('.btn-Container')
+    const btn1 = document.querySelector('#btn1')
+    const btn2 = document.querySelector('#btn2')
+    const btn3 = document.querySelector('#btn3')
+    const show = document.querySelectorAll('.show')
 
-    //Retures a Random Value if 'input' = "" or null
-    if (input === null) {input = getComputerChoice()}
-    else if (input === "") {input = getComputerChoice()};
+    const human = document.createElement('span')
+    human.setAttribute('class', 'score1')
+    show[0].appendChild(human)
+    
+    const computer = document.createElement('span')
+    computer.setAttribute('class', 'score2')
+    show[0].appendChild(computer)
 
-    //returns "input" with it's first letter capitalized.
-    input = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
-    return input
-}
-console.log(getHumanChoice())
-
-//Score Board
-let humanScore = 0;
-let computerScore = 0;
-
-//Single Round
-function playRound(humanChoice, computerChoice) {
-humanChoice = getHumanChoice();
-computerChoice = getComputerChoice();
-if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
- console.log(`You won ${humanChoice} beats ${computerChoice}`)
- humanScore++
-} else if (humanChoice == computerChoice) {
-    console.log(`Try Again, Your choice "${humanChoice}" = Computer choice "${computerChoice}"`)
-}
-else {
-    console.log(`Computer won ${computerChoice} beats ${humanChoice}`)
-    computerScore++
-}
-return {computerScore, humanScore}
-}
-console.log(playRound());
-
-//Play Round
-function playGame() {
-humanScore = 0;
-computerScore= 0;
- for (i = 1; i <= 5; i++ ) {
-    playRound()
-}
-if (computerScore === humanScore) {
-    console.log("Try again it's a Tie")
-} else if (computerScore > humanScore) {console.log("Computer won")} else {console.log("Congrat you won")}
- return {computerScore, humanScore,};
-}
-console.log(playGame())
+    human.textContent = `YOUR SCORE| 0 —  `
+    computer.textContent = `0 |COMPUTER SCORE`    
+  
+    //Score 
+    
+    let humanScore = 0
+    let computerScore = 0
+    
+    btn1.addEventListener('click',() => {
+        humanChoice = btn1.value;
+        computerChoice = getComputerChoice();
+            if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
+                show[1].textContent = `You won: ${humanChoice} beats ${computerChoice}` 
+                humanScore++
+                human.textContent = `YOUR SCORE| ${humanScore} —  `
+            }
+             else if (humanChoice === computerChoice) {
+                show[1].textContent =  `It's a Tie`
+            }
+            else {
+                show[1].textContent =  `Computer won: ${computerChoice} beats ${humanChoice}`
+                computerScore++
+                computer.textContent = `${computerScore} |COMPUTER SCORE`    
+            }
+        }
+    )
+    btn2.addEventListener('click',() => {
+            humanChoice = btn2.value;
+            computerChoice = getComputerChoice();
+            if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
+                show[1].textContent = `You won: ${humanChoice} beats ${computerChoice}` 
+                humanScore++
+                human.textContent = `YOUR SCORE| ${humanScore} —  `
+            }
+             else if (humanChoice === computerChoice) {
+                show[1].textContent =  `It's a Tie`
+            }
+            else {
+                show[1].textContent =  `Computer won: ${computerChoice} beats ${humanChoice}`
+                computerScore++
+                computer.textContent = `${computerScore} |COMPUTER SCORE`    
+            }
+        }
+    )
+    btn3.addEventListener('click',() => {
+            humanChoice = btn3.value;
+            computerChoice = getComputerChoice();
+            if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
+                show[1].textContent = `You won: ${humanChoice} beats ${computerChoice}` 
+                humanScore++
+                human.textContent = `YOUR SCORE| ${humanScore} —  `
+            }
+             else if (humanChoice === computerChoice) {
+                show[1].textContent =  `It's a Tie`
+            }
+            else {
+                show[1].textContent =  `Computer won: ${computerChoice} beats ${humanChoice}`
+                computerScore++
+                computer.textContent = `${computerScore} |COMPUTER SCORE`    
+            }
+        }     
+    )
