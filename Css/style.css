@@ -5,6 +5,7 @@ p {
     text-align: center;
     margin: 0;
     border: none;
+    min-height: 50px;
 }
 
 .btn-Container {
@@ -21,7 +22,7 @@ p {
 }
 
 div > p {
-    padding: 50px 0;
+    padding: 25px 0;
 }
 
 span {

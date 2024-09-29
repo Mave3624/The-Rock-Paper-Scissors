@@ -21,7 +21,7 @@ let getComputerChoice = function() {
     const computer = document.createElement('span')
     computer.setAttribute('class', 'score2')
     show[0].appendChild(computer)
-
+    show[1].innerHTML = 'Choose Between <br> Rock | Paper | Scissors'
     human.textContent = `YOUR SCORE| 0 —  `
     computer.textContent = `0 |COMPUTER SCORE`    
   
@@ -31,56 +31,88 @@ let getComputerChoice = function() {
     let computerScore = 0
     
     btn1.addEventListener('click',() => {
-        humanChoice = btn1.value;
-        computerChoice = getComputerChoice();
-            if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
-                show[1].textContent = `You won: ${humanChoice} beats ${computerChoice}` 
-                humanScore++
-                human.textContent = `YOUR SCORE| ${humanScore} —  `
-            }
-             else if (humanChoice === computerChoice) {
-                show[1].textContent =  `It's a Tie`
-            }
-            else {
-                show[1].textContent =  `Computer won: ${computerChoice} beats ${humanChoice}`
-                computerScore++
-                computer.textContent = `${computerScore} |COMPUTER SCORE`    
-            }
-        }
-    )
-    btn2.addEventListener('click',() => {
-            humanChoice = btn2.value;
-            computerChoice = getComputerChoice();
-            if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
-                show[1].textContent = `You won: ${humanChoice} beats ${computerChoice}` 
-                humanScore++
-                human.textContent = `YOUR SCORE| ${humanScore} —  `
-            }
-             else if (humanChoice === computerChoice) {
-                show[1].textContent =  `It's a Tie`
-            }
-            else {
-                show[1].textContent =  `Computer won: ${computerChoice} beats ${humanChoice}`
-                computerScore++
-                computer.textContent = `${computerScore} |COMPUTER SCORE`    
-            }
-        }
-    )
-    btn3.addEventListener('click',() => {
+        Timer()
             humanChoice = btn3.value;
             computerChoice = getComputerChoice();
             if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
-                show[1].textContent = `You won: ${humanChoice} beats ${computerChoice}` 
                 humanScore++
+                show[1].style.color = 'green';
+                show[1].textContent = `You won: ${humanChoice} beats ${computerChoice}` 
                 human.textContent = `YOUR SCORE| ${humanScore} —  `
+                
             }
              else if (humanChoice === computerChoice) {
                 show[1].textContent =  `It's a Tie`
             }
             else {
-                show[1].textContent =  `Computer won: ${computerChoice} beats ${humanChoice}`
                 computerScore++
+                show[1].style.color = 'red';
+                show[1].textContent =  `Computer won: ${computerChoice} beats ${humanChoice}`
                 computer.textContent = `${computerScore} |COMPUTER SCORE`    
             }
-        }     
+            btn1.disabled = true
+            btn2.disabled = true
+            btn3.disabled = true
+        }
     )
+    btn2.addEventListener('click',() => {
+        Timer()
+            humanChoice = btn3.value;
+            computerChoice = getComputerChoice();
+            if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
+                humanScore++
+                show[1].style.color = 'green';
+                show[1].textContent = `You won: ${humanChoice} beats ${computerChoice}` 
+                human.textContent = `YOUR SCORE| ${humanScore} —  `
+                
+            }
+             else if (humanChoice === computerChoice) {
+                show[1].textContent =  `It's a Tie`
+            }
+            else {
+                computerScore++
+                show[1].style.color = 'red';
+                show[1].textContent =  `Computer won: ${computerChoice} beats ${humanChoice}`
+                computer.textContent = `${computerScore} |COMPUTER SCORE`    
+            }
+            btn1.disabled = true
+            btn2.disabled = true
+            btn3.disabled = true
+        }
+    )
+    btn3.addEventListener('click',() => {
+        Timer()
+            humanChoice = btn3.value;
+            computerChoice = getComputerChoice();
+            if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
+                humanScore++
+                show[1].style.color = 'green';
+                show[1].textContent = `You won: ${humanChoice} beats ${computerChoice}` 
+                human.textContent = `YOUR SCORE| ${humanScore} —  `
+                
+            }
+             else if (humanChoice === computerChoice) {
+                show[1].textContent =  `It's a Tie`
+            }
+            else {
+                computerScore++
+                show[1].style.color = 'red';
+                show[1].textContent =  `Computer won: ${computerChoice} beats ${humanChoice}`
+                computer.textContent = `${computerScore} |COMPUTER SCORE`    
+            }
+            btn1.disabled = true
+            btn2.disabled = true
+            btn3.disabled = true
+        }
+    )
+ 
+function Timer() {
+    setTimeout(() => {
+        btn1.disabled = false
+        btn2.disabled = false
+        btn3.disabled = false
+        show[1].style.color = 'black';
+        show[1].innerHTML = 'Choose Between <br> Rock | Paper | Scissors'
+        }, 800
+)
+}
