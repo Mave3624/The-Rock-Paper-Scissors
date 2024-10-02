@@ -7,12 +7,12 @@ p {
     min-height: 50px;
 }
 
-.btn-Container {
+.btn-Container, .reset {
     text-align: center;
     padding: 50px 10px;
 }
 
-.btn-Container > button {
+.btn-Container > button, .reset > button {
     width: 80px;
     padding: 10px 0;
     font-weight: 800;

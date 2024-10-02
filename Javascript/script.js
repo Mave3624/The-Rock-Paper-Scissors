@@ -1,5 +1,6 @@
 
     const btn = document.querySelector('.btn-Container')
+    const reset = document.querySelector('.reset')
     const btn1 = document.querySelector('#btn1')
     const btn2 = document.querySelector('#btn2')
     const btn3 = document.querySelector('#btn3')
@@ -29,16 +30,15 @@
     let humanScore = 0
     let computerScore = 0
 
-function choiceChecker() {
-    show[2].textContent = ''
-    let computerChoice = getComputerChoice();
+function GameLogic() {
+    let computerChoice = getComputerChoice()
     if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
         humanScore++
         show[1].textContent = `${humanChoice}  beats  ${computerChoice}` 
         Score.textContent = ` ${humanScore} — ${computerScore} ` 
         show[1].style.color = 'green'
-        }
-     else if (humanChoice === computerChoice) {
+    }
+    else if (humanChoice === computerChoice) {
         show[1].textContent =  `It's a Tie`
     }
     else {
@@ -47,6 +47,22 @@ function choiceChecker() {
         Score.textContent = ` ${humanScore} — ${computerScore} ` 
         show[1].style.color = 'red'
     }
+}
+
+function Timer() {
+    setTimeout(() => {
+        btn1.disabled = false
+        btn2.disabled = false
+        btn3.disabled = false
+        show[1].style.color = 'black';
+        show[1].innerHTML = 'Choose Between <br> Rock | Paper | Scissors'
+    }, 800
+)
+}
+
+function Checker() {
+    show[2].textContent = ''
+    GameLogic()
     if (humanScore < 5 && computerScore < 5) {
         btn1.disabled = true
         btn2.disabled = true
@@ -59,7 +75,7 @@ function choiceChecker() {
         if (humanScore > computerScore) result = `Congratulations, You Won`
         if (computerScore > humanScore) result = `You Lost, Try Again`
         show[1].textContent = result
-        btn.append(btn4)
+        reset.append(btn4)
         btn1.remove()
         btn2.remove()
         btn3.remove()
@@ -80,27 +96,17 @@ function choiceChecker() {
 
     btn1.addEventListener('click',() => {
         humanChoice = btn1.value;
-            choiceChecker()
+            Checker()
     }
     )
     btn2.addEventListener('click',() => {
         humanChoice = btn2.value;
-            choiceChecker()
+            Checker()
         }
     )
     btn3.addEventListener('click',() => {
         humanChoice = btn3.value;
-            choiceChecker()
+            Checker()
         }
     )
  
-function Timer() {
-    setTimeout(() => {
-        btn1.disabled = false
-        btn2.disabled = false
-        btn3.disabled = false
-        show[1].style.color = 'black';
-        show[1].innerHTML = 'Choose Between <br> Rock | Paper | Scissors'
-    }, 500
-)
-}
