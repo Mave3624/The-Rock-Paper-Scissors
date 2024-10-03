@@ -15,18 +15,15 @@
 
     show[1].innerHTML = 'Choose Between <br> Rock | Paper | Scissors'
 
-    
-// Computer Choice Function
-    let getComputerChoice = function() {
+let getComputerChoice = function() {
     let computer
     const random = Math.floor(Math.random()*10)+1;
     (random >= 0 && random <= 3) ? computer = "Rock":
     (random > 3 && random <= 7) ? computer = "Paper":
     computer = "Scissors";
     return computer
-    }
+}
  
-//Score  
     let humanScore = 0
     let computerScore = 0
 
@@ -72,8 +69,12 @@ function Checker() {
         show[2].textContent = 'Game Over'
         show[1].textContent = ''
         let result
-        if (humanScore > computerScore) result = `Congratulations, You Won`
-        if (computerScore > humanScore) result = `You Lost, Try Again`
+        if (humanScore > computerScore) {
+            result = `Congratulations, You Won`
+        }
+        if (computerScore > humanScore) {
+            result = `You Lost, Try Again`
+        }
         show[1].textContent = result
         reset.append(btn4)
         btn1.remove()
