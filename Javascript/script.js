@@ -72,7 +72,7 @@ function Checker() {
         if (humanScore > computerScore) {
             result = `Congratulations, You Won`
         }
-        if (computerScore > humanScore) {
+        else {
             result = `You Lost, Try Again`
         }
         show[1].textContent = result
@@ -98,7 +98,7 @@ function Checker() {
     btn1.addEventListener('click',() => {
         humanChoice = btn1.value;
             Checker()
-    }
+        }
     )
     btn2.addEventListener('click',() => {
         humanChoice = btn2.value;
