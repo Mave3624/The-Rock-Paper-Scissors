@@ -6,6 +6,7 @@
     const btn3 = document.querySelector('#btn3')
     const show = document.querySelectorAll('.show')
     const btn4 = document.createElement('button')
+    const trans = document.querySelector('.trans')
     btn4.textContent = "Restart"
 
     const Score = document.createElement('span')
@@ -32,8 +33,9 @@ function GameLogic() {
     if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
         humanScore++
         show[1].textContent = `${humanChoice}  beats  ${computerChoice}` 
-        Score.textContent = ` ${humanScore} — ${computerScore} ` 
+        Score.textContent = ` ${humanScore} — ${computerScore} `
         show[1].style.color = 'green'
+        trans.style.border = '1px double green'
     }
     else if (humanChoice === computerChoice) {
         show[1].textContent =  `It's a Tie`
@@ -43,11 +45,17 @@ function GameLogic() {
         show[1].textContent =  `${computerChoice}  beats  ${humanChoice}`
         Score.textContent = ` ${humanScore} — ${computerScore} ` 
         show[1].style.color = 'red'
+        trans.style.border = '2px double red'
     }
+    (computerScore > humanScore) ?  Score.style.backgroundColor = 'red':
+    (humanScore > computerScore) ?  Score.style.backgroundColor = 'green':
+    Score.style.backgroundColor = 'transparent'
+
 }
 
 function Timer() {
     setTimeout(() => {
+        trans.style.border = 'none'
         btn1.disabled = false
         btn2.disabled = false
         btn3.disabled = false
@@ -89,6 +97,8 @@ function Checker() {
         show[2].textContent = ''
         Score.textContent= " - — - "
         show[1].style.color = 'black';
+        trans.style.border = 'none'
+        Score.style.backgroundColor = 'transparent'
         show[1].innerHTML = 'Choose Between <br> Rock | Paper | Scissors'
         btn.append(btn1, btn2, btn3)
         btn4.remove()
